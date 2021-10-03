@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "fVzsebyT4YMcdlpV/OCXr4UCvYGnaW2L+peQB7hzZ+MInvA/Jjcw6P0DE5sNA0TkmKpltmW7jhj1TSYdhkjsfw==",
+  "success": true,
+  "projectFilePath": "/Users/justinhidalgo/Documents/MovieAssignmentProjects/MovieAssignmentFirst/MovieAssignmentAbstract/AbstractMovieAssignment/AbstractMovieAssignment/AbstractMovieAssignment.csproj",
+  "expectedPackageFiles": [
+    "/Users/justinhidalgo/.nuget/packages/csvhelper/27.1.1/csvhelper.27.1.1.nupkg.sha512",
+    "/Users/justinhidalgo/.nuget/packages/nlog/5.0.0-preview.1/nlog.5.0.0-preview.1.nupkg.sha512",
+    "/Users/justinhidalgo/.nuget/packages/nlog.config/4.7.11/nlog.config.4.7.11.nupkg.sha512",
+    "/Users/justinhidalgo/.nuget/packages/nlog.extended/4.7.11/nlog.extended.4.7.11.nupkg.sha512",
+    "/Users/justinhidalgo/.nuget/packages/nlog.schema/4.7.11/nlog.schema.4.7.11.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NLog.Extended 4.7.11' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "NLog.Extended",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{A7797421-1CDD-4519-98D0-B86390514DC6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AbstractMovieAssignment/Program.cs">
+    <Files>
+      <File FileName="AbstractMovieAssignment/Program.cs" Line="158" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AbstractMovieAssignment" expanded="True">
+            <Node name="AbstractMovieAssignment" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AbstractMovieAssignment PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

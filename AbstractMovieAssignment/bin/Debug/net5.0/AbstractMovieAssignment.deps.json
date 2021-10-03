@@ -1,0 +1,95 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "AbstractMovieAssignment/1.0.0": {
+        "dependencies": {
+          "CsvHelper": "27.1.1",
+          "NLog": "5.0.0-preview.1",
+          "NLog.Config": "4.7.11",
+          "NLog.Extended": "4.7.11"
+        },
+        "runtime": {
+          "AbstractMovieAssignment.dll": {}
+        }
+      },
+      "CsvHelper/27.1.1": {
+        "runtime": {
+          "lib/net5.0/CsvHelper.dll": {
+            "assemblyVersion": "27.0.0.0",
+            "fileVersion": "27.1.1.0"
+          }
+        }
+      },
+      "NLog/5.0.0-preview.1": {
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.1"
+          }
+        }
+      },
+      "NLog.Config/4.7.11": {
+        "dependencies": {
+          "NLog": "5.0.0-preview.1",
+          "NLog.Schema": "4.7.11"
+        }
+      },
+      "NLog.Extended/4.7.11": {
+        "runtime": {
+          "lib/net45/NLog.Extended.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.7.11.13229"
+          }
+        }
+      },
+      "NLog.Schema/4.7.11": {}
+    }
+  },
+  "libraries": {
+    "AbstractMovieAssignment/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CsvHelper/27.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lo5yypClBORR2XiWPRxQApaA4C2R4GVCIPVRt9HfaLxLmVQtg/KZiOYsd4luLgyOxkUatF9R0QdFQYk7Y2l0cw==",
+      "path": "csvhelper/27.1.1",
+      "hashPath": "csvhelper.27.1.1.nupkg.sha512"
+    },
+    "NLog/5.0.0-preview.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1K6pDap1HOTMFyvVbzp0ygPw8013IXmMyXugfMWVI56GmcdUNFvFhvyT1QaDZ5SZSY9Kbu9CUiN4Wt1jkVmYdw==",
+      "path": "nlog/5.0.0-preview.1",
+      "hashPath": "nlog.5.0.0-preview.1.nupkg.sha512"
+    },
+    "NLog.Config/4.7.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-p9N8dsMVdyXNN+KU2BsBFZ1aR+usL8JWPKe1YuXlKjPEQsltYO43tajlkX2Kilai+PAE1zw9UC8AaBq5r78x3A==",
+      "path": "nlog.config/4.7.11",
+      "hashPath": "nlog.config.4.7.11.nupkg.sha512"
+    },
+    "NLog.Extended/4.7.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ngsFGL3EK2bqwwzAz+uinFLP8gFBfsI0tD40sc6O3pVUq9XKkt9AlEeonDoCgeWDFopDemnmTkfw5Bxu37WTCg==",
+      "path": "nlog.extended/4.7.11",
+      "hashPath": "nlog.extended.4.7.11.nupkg.sha512"
+    },
+    "NLog.Schema/4.7.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9mmj/hApaSmX9jP2PxLyqywesdEI1nIT2TVWgsdoqb1yIpxvUM+1b6aMD2zJkpGN8y71jmVO2d/FKTwQXIfpSw==",
+      "path": "nlog.schema/4.7.11",
+      "hashPath": "nlog.schema.4.7.11.nupkg.sha512"
+    }
+  }
+}
