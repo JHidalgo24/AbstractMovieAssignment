@@ -43,11 +43,12 @@ namespace AbstractMovieAssignment
                             string title = Console.ReadLine();
                             Console.WriteLine("What year was the movie made in?");
                             title = title + " (" + Console.ReadLine() + ")";
-                            while (DuplicateChecker(title, "Movie"))
+                            while (DuplicateChecker(title, "Movie")) 
                             {
                                 System.Console.WriteLine($"The film you picked already exists in enter a new one");
                                 title = Console.ReadLine();
                                 Console.WriteLine("Enter the year of the film");
+                                title = title + " (" + Console.ReadLine() + ")";
                             }
                             System.Console.WriteLine("How many genres do you want to add?");
                             int genreAmount = Menu.ValueGetter();
@@ -55,8 +56,7 @@ namespace AbstractMovieAssignment
                             {
                                 System.Console.WriteLine($"What is the {i + 1} genre?");
                                 genresPicked.Add(Console.ReadLine());
-                                Console.WriteLine("What year was the movie made in?(yyyy)");
-                                title = title + " (" + Menu.ValueGetter() + ")";
+                                
                             }
                             CsvFileHelper.MovieAdd(id, title, string.Join("|", genresPicked));
                         }
