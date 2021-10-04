@@ -14,7 +14,7 @@ namespace AbstractMovieAssignment.MediaObjects
             return genresArray;
         }
 
-    public override string Display()
+        public override string Display()
         {
             return $"MovieId:{Id} Title:{title} Genres:{genres}";
         }

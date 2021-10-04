@@ -15,7 +15,7 @@ namespace AbstractMovieAssignment
         {
             int option = 0;
             int choice = 0;
-            
+
             while (option != 4)
             {
                 Menu.Display();
@@ -30,10 +30,10 @@ namespace AbstractMovieAssignment
                         CsvFileHelper.Movies();
                         if (choice == 1)
                         {
-                            foreach (var movie in CsvFileHelper.MovieList)
-                            {
-                                Console.WriteLine(movie.Display());
-                            }  
+                            Console.Clear();
+                            Console.WriteLine("What would you like to search?(Enter for all)");
+                            string search = Console.ReadLine();
+                            CsvFileHelper.SearchMedia("Movie", search);
                         }
                         else if (choice == 2)
                         {
@@ -42,21 +42,23 @@ namespace AbstractMovieAssignment
                             System.Console.WriteLine("What is the title of the film?");
                             string title = Console.ReadLine();
                             Console.WriteLine("What year was the movie made in?");
-                            title = title + " (" + Console.ReadLine() + ")"; 
-                            while(DuplicateChecker(title,"Movie")){
+                            title = title + " (" + Console.ReadLine() + ")";
+                            while (DuplicateChecker(title, "Movie"))
+                            {
                                 System.Console.WriteLine($"The film you picked already exists in enter a new one");
                                 title = Console.ReadLine();
                                 Console.WriteLine("Enter the year of the film");
                             }
                             System.Console.WriteLine("How many genres do you want to add?");
                             int genreAmount = Menu.ValueGetter();
-                            for(int i = 0; i< genreAmount; i++){
-                                System.Console.WriteLine($"What is the {i+1} genre?");
-                                genresPicked.Add(Console.ReadLine()); 
+                            for (int i = 0; i < genreAmount; i++)
+                            {
+                                System.Console.WriteLine($"What is the {i + 1} genre?");
+                                genresPicked.Add(Console.ReadLine());
                                 Console.WriteLine("What year was the movie made in?(yyyy)");
-                                title = title + " (" + Menu.ValueGetter() + ")"; 
+                                title = title + " (" + Menu.ValueGetter() + ")";
                             }
-                            CsvFileHelper.MovieAdd(id,title,string.Join("|",genresPicked));
+                            CsvFileHelper.MovieAdd(id, title, string.Join("|", genresPicked));
                         }
                         else Console.WriteLine("Sorry not a choice!");
                         break;
@@ -67,11 +69,10 @@ namespace AbstractMovieAssignment
                         CsvFileHelper.Shows();//reads the videos file and makes the list for it in the CSVFile Class
                         if (choice == 1)
                         {
-                            logger.Trace("User chose option 2");
-                            foreach (var shows in CsvFileHelper.ShowsList)
-                            {
-                                Console.WriteLine(shows.Display());
-                            }
+                            Console.Clear();
+                            Console.WriteLine("What would you like to search?(Enter for all)");
+                            string search = Console.ReadLine();
+                            CsvFileHelper.SearchMedia("Show", search);
                         }
                         else if (choice == 2)
                         {
@@ -92,10 +93,10 @@ namespace AbstractMovieAssignment
                             int writerCount = Menu.ValueGetter();
                             for (int i = 0; i < writerCount; i++)
                             {
-                                Console.WriteLine($"What is the name of writer #{i+1}");
+                                Console.WriteLine($"What is the name of writer #{i + 1}");
                                 writers.Add(Console.ReadLine());
                             }
-                            CsvFileHelper.ShowAdd(id,title,seasons,episodes,string.Join('|',writers));
+                            CsvFileHelper.ShowAdd(id, title, seasons, episodes, string.Join('|', writers));
                         }
                         else Console.WriteLine("Sorry not a choice!");
                         break;
@@ -106,11 +107,10 @@ namespace AbstractMovieAssignment
                         CsvFileHelper.Videos();//reads the videos file and makes the list for it in the CSVFile Class
                         if (choice == 1)
                         {
-                            logger.Trace("User chose option 3");
-                            foreach (var video in CsvFileHelper.VideoList)
-                            {
-                                Console.WriteLine(video.Display());
-                            }
+                            Console.Clear();
+                            Console.WriteLine("What would you like to search?(Enter for all)");
+                            string search = Console.ReadLine();
+                            CsvFileHelper.SearchMedia("Video", search);
                         }
                         else if (choice == 2)
                         {
@@ -123,7 +123,7 @@ namespace AbstractMovieAssignment
                             int formatTotals = Menu.ValueGetter();
                             for (int i = 0; i < formatTotals; i++)
                             {
-                                Console.WriteLine($"Format #{i+1}");
+                                Console.WriteLine($"Format #{i + 1}");
                                 formats.Add(Console.ReadLine());
                             }
                             Console.WriteLine("What is the format of the video? Ex.DVD,Bluray,VHS");
@@ -134,11 +134,11 @@ namespace AbstractMovieAssignment
                             int regionsCount = Menu.ValueGetter();
                             for (int i = 0; i < regionsCount; i++)//I don't know the region codes so I made them on the spot
                             {
-                                Console.WriteLine($"Region #{i+1}?");
+                                Console.WriteLine($"Region #{i + 1}?");
                                 Console.WriteLine("0.)North America\n1.)South America\n2.)Europe\n3.)Asia\n4.)Australia\n5.)Antarctica");
                                 regions.Add(Console.ReadLine());
                             }
-                            CsvFileHelper.VideoAdd(id,title,string.Join('|',format),length,string.Join('|',regions));
+                            CsvFileHelper.VideoAdd(id, title, string.Join('|', format), length, string.Join('|', regions));
                         }
                         else Console.WriteLine("Sorry not a choice!");
                         break;
@@ -154,43 +154,50 @@ namespace AbstractMovieAssignment
                         break;
 
                 }
-                
+
             }
         }
         public static bool DuplicateChecker(string chosenMedia, string type)
         {
             bool contained = false;
-            switch(type){
+            switch (type)
+            {
                 case "Movie":
-                CsvFileHelper.Movies();
-                foreach(var media in CsvFileHelper.MovieList){
-                    if(media.title.ToLower().Equals(chosenMedia.ToLower())){
-                        contained = true;
-                        break;
+                    CsvFileHelper.Movies();
+                    foreach (var media in CsvFileHelper.MovieList)
+                    {
+                        if (media.title.ToLower().Equals(chosenMedia.ToLower()))
+                        {
+                            contained = true;
+                            break;
+                        }
                     }
-                }
-                break;
+                    break;
                 case "Show":
-                CsvFileHelper.Movies();
-                foreach(var media in CsvFileHelper.MovieList){
-                    if(media.title == chosenMedia){
-                        contained = true;
-                        break;
+                    CsvFileHelper.Movies();
+                    foreach (var media in CsvFileHelper.MovieList)
+                    {
+                        if (media.title == chosenMedia)
+                        {
+                            contained = true;
+                            break;
+                        }
+
                     }
-                    
-                }
-                break;
+                    break;
                 case "Video":
-                CsvFileHelper.Videos();
-                foreach(var media in CsvFileHelper.VideoList){
-                    if(media.title == chosenMedia){
-                        contained = true;
-                        break;
+                    CsvFileHelper.Videos();
+                    foreach (var media in CsvFileHelper.VideoList)
+                    {
+                        if (media.title == chosenMedia)
+                        {
+                            contained = true;
+                            break;
+                        }
                     }
-                }
-                break;
+                    break;
             }
-            
+
             return contained;
         }
     }

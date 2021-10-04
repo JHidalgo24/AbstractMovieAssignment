@@ -22,14 +22,14 @@ namespace AbstractMovieAssignment.FileManagers
         {
             try
             {
-                
+
                 using (var streamReader =
                     new StreamReader(ShowPath))
                 using (var csv = new CsvReader(streamReader, CultureInfo.InvariantCulture))
                 {
                     var records = csv.GetRecords<Shows>().ToList();
                     ShowsList = records;
-                
+
                 }
             }
             catch (Exception)
@@ -40,17 +40,17 @@ namespace AbstractMovieAssignment.FileManagers
         }
         public void Videos()
         {
-            
+
             try
             {
-                
+
                 using (var streamReader =
                     new StreamReader(VideoPath))
                 using (var csv = new CsvReader(streamReader, CultureInfo.InvariantCulture))
                 {
                     var records = csv.GetRecords<Video>().ToList();
                     VideoList = records;
-                
+
                 }
             }
             catch (Exception)
@@ -64,7 +64,7 @@ namespace AbstractMovieAssignment.FileManagers
 
             try
             {
-                
+
                 using (var streamReader =
                     new StreamReader(MoviePath))
                 using (var csv = new CsvReader(streamReader, CultureInfo.InvariantCulture))
@@ -81,8 +81,8 @@ namespace AbstractMovieAssignment.FileManagers
         }
         public void ShowAdd(int id, string title, int season, int episode, string writers)
         {
-            
-            var records = new List<Shows> { new Shows{episode = episode, Id = id,season = season,title = title, writersString = writers}};
+
+            var records = new List<Shows> { new Shows { episode = episode, Id = id, season = season, title = title, writersString = writers } };
             var config = new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = false, };
             using (var stream = File.Open(ShowPath,
                 FileMode.Append))
@@ -92,12 +92,12 @@ namespace AbstractMovieAssignment.FileManagers
                 csv.Context.RegisterClassMap<ShowClassMap>();
                 csv.WriteRecords(records);
             }
-            
+
         }
         public void VideoAdd(int id, string title, string format, int length, string regions)
         {
 
-            var records = new List<Video> { new Video {Id = id,title = title,Format = format, Length = length, RegionsString = regions}};
+            var records = new List<Video> { new Video { Id = id, title = title, Format = format, Length = length, RegionsString = regions } };
             var config = new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = false, };
             using (var stream = File.Open(VideoPath,
                 FileMode.Append))
@@ -111,7 +111,7 @@ namespace AbstractMovieAssignment.FileManagers
         public void MovieAdd(int id, string title, string genres)
         {
 
-            var records = new List<Movie> { new Movie{ Id = id , title = title, genres = genres }};
+            var records = new List<Movie> { new Movie { Id = id, title = title, genres = genres } };
             var config = new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = false, };
             using (var stream = File.Open(MoviePath,
                 FileMode.Append))
@@ -122,41 +122,74 @@ namespace AbstractMovieAssignment.FileManagers
                 csv.WriteRecords(records);
             }
         }
-
-        public void SearchMedia(string type,string title)
+        public void SearchMedia(string type, string title)
         {
             switch (type)
             {
                 case "Show":
-                    foreach (var show in ShowsList)
+                    if (title != "")
                     {
-                        if (show.title.ToLower() == title.ToLower())
+                        foreach (var show in ShowsList)
                         {
-                            show.Display();
+                            if (show.title.ToLower().Contains(title.ToLower()))
+                            {
+                                Console.WriteLine(show.Display());
+                            }
+
+                        }
+                    }
+                    else if (title == "")
+                    {
+                        foreach (var show in ShowsList)
+                        {
+                            Console.WriteLine(show.Display());
                         }
                     }
                     break;
                 case "Movie":
-                {
-                    foreach (var movie in MovieList)
                     {
-                        if (movie.title.ToLower() == title.ToLower())
+                        Movies();
+                        if (title != "")
                         {
-                            movie.Display();
+                            foreach (var movie in MovieList)
+                            {
+                                if (movie.title.ToLower().Contains(title.ToLower()))
+                                {
+                                    Console.WriteLine(movie.Display());
+                                }
+
+                            }
+                        }
+                        else if (title == "")
+                        {
+                            foreach (var movie in MovieList)
+                            {
+                                Console.WriteLine(movie.Display());
+                            }
                         }
                     }
-                }
                     break;
                 case "Video":
-                {
-                    foreach (var video in VideoList)
                     {
-                        if (video.title.ToLower() == title.ToLower())
+                        if (title != "")
                         {
-                            video.Display();
+                            foreach (var video in VideoList)
+                            {
+                                if (video.title.ToLower().Contains(title.ToLower()))
+                                {
+                                    Console.WriteLine(video.Display());
+                                }
+
+                            }
+                        }
+                        else if (title == "")
+                        {
+                            foreach (var video in VideoList)
+                            {
+                                Console.WriteLine(video.Display());
+                            }
                         }
                     }
-                }
                     break;
             }
         }
