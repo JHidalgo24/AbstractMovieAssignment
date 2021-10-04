@@ -94,7 +94,6 @@ namespace AbstractMovieAssignment.FileManagers
             }
             
         }
-
         public void VideoAdd(int id, string title, string format, int length, string regions)
         {
 
@@ -109,7 +108,6 @@ namespace AbstractMovieAssignment.FileManagers
                 csv.WriteRecords(records);
             }
         }
-
         public void MovieAdd(int id, string title, string genres)
         {
 
@@ -124,7 +122,45 @@ namespace AbstractMovieAssignment.FileManagers
                 csv.WriteRecords(records);
             }
         }
-        
-        
+
+        public void SearchMedia(string type,string title)
+        {
+            switch (type)
+            {
+                case "Show":
+                    foreach (var show in ShowsList)
+                    {
+                        if (show.title.ToLower() == title.ToLower())
+                        {
+                            show.Display();
+                        }
+                    }
+                    break;
+                case "Movie":
+                {
+                    foreach (var movie in MovieList)
+                    {
+                        if (movie.title.ToLower() == title.ToLower())
+                        {
+                            movie.Display();
+                        }
+                    }
+                }
+                    break;
+                case "Video":
+                {
+                    foreach (var video in VideoList)
+                    {
+                        if (video.title.ToLower() == title.ToLower())
+                        {
+                            video.Display();
+                        }
+                    }
+                }
+                    break;
+            }
+        }
+
+
     }
 }

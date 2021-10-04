@@ -8,9 +8,9 @@ namespace AbstractMovieAssignment
 {
     class Program
     {
-        public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        public static CsvFileHelper CsvFileHelper = new CsvFileHelper();
-        public static Menu Menu = new Menu();
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private static CsvFileHelper CsvFileHelper = new CsvFileHelper();
+        private static Menu Menu = new Menu();
         static void Main(string[] args)
         {
             int option = 0;
@@ -60,7 +60,6 @@ namespace AbstractMovieAssignment
                         }
                         else Console.WriteLine("Sorry not a choice!");
                         break;
-                    
                     //Shows
                     case 2:
                         Console.WriteLine("Do you want to\n1.)Display \n2.)Add");
@@ -73,7 +72,6 @@ namespace AbstractMovieAssignment
                             {
                                 Console.WriteLine(shows.Display());
                             }
-                            break;
                         }
                         else if (choice == 2)
                         {
@@ -133,8 +131,8 @@ namespace AbstractMovieAssignment
                             Console.WriteLine("How many minutes long is the video?");
                             int length = Menu.ValueGetter();
                             Console.WriteLine("How many regions is it in?");
-                            int regionsCount = Menu.ValueGetter();//I don't know the region codes so I made them on the spot
-                            for (int i = 0; i < regionsCount; i++)
+                            int regionsCount = Menu.ValueGetter();
+                            for (int i = 0; i < regionsCount; i++)//I don't know the region codes so I made them on the spot
                             {
                                 Console.WriteLine($"Region #{i+1}?");
                                 Console.WriteLine("0.)North America\n1.)South America\n2.)Europe\n3.)Asia\n4.)Australia\n5.)Antarctica");
@@ -144,10 +142,12 @@ namespace AbstractMovieAssignment
                         }
                         else Console.WriteLine("Sorry not a choice!");
                         break;
-                    case 4://Exit Application
+                    //Exit
+                    case 4:
                         logger.Debug("User exited the program");
                         Console.WriteLine("Goodbye!");
                         break;
+                    //wrong input
                     default:
                         logger.Debug($"User chose {option} not valid");
                         Console.WriteLine("That isn't an option sorry!");
@@ -157,7 +157,6 @@ namespace AbstractMovieAssignment
                 
             }
         }
-        
         public static bool DuplicateChecker(string chosenMedia, string type)
         {
             bool contained = false;
@@ -167,6 +166,7 @@ namespace AbstractMovieAssignment
                 foreach(var media in CsvFileHelper.MovieList){
                     if(media.title.ToLower().Equals(chosenMedia.ToLower())){
                         contained = true;
+                        break;
                     }
                 }
                 break;
@@ -175,7 +175,9 @@ namespace AbstractMovieAssignment
                 foreach(var media in CsvFileHelper.MovieList){
                     if(media.title == chosenMedia){
                         contained = true;
+                        break;
                     }
+                    
                 }
                 break;
                 case "Video":
@@ -183,6 +185,7 @@ namespace AbstractMovieAssignment
                 foreach(var media in CsvFileHelper.VideoList){
                     if(media.title == chosenMedia){
                         contained = true;
+                        break;
                     }
                 }
                 break;
